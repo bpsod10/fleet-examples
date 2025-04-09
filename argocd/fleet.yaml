@@ -1,4 +1,4 @@
-namespace: fleet-argocd-example
+defaultNamespace: fleet-argocd-example
 helm:
   chart: argo-cd
   repo: https://argoproj.github.io/argo-helm
