@@ -1,0 +1,22 @@
+namespace: fleet-argocd-example
+helm:
+  chart: https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+targetCustomizations:
+- name: dev
+  helm:
+    values:
+      replication: false
+  clusterSelector:
+    matchLabels:
+      env: dev
+
+- name: prod
+  helm:
+    values:
+      serviceType: NodePort
+      replicas: 3
+  clusterSelector:
+    matchLabels:
+      env: prod
+      
+
