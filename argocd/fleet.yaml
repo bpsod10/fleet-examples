@@ -1,6 +1,8 @@
 namespace: fleet-argocd-example
 helm:
-  chart: https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+  chart: argo-cd
+  repo: https://argoproj.github.io/argo-helm
+  version: 5.51.6  # Optional: replace with desired version  
 targetCustomizations:
 - name: dev
   helm:
