@@ -1,6 +1,6 @@
-namespace: fleet-argocd-example
+namespace: fleet-mc-helm-external-example
 helm:
-  chart: https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+  chart: https://github.com/rancher/fleet-examples/releases/download/example/guestbook-0.0.0.tgz
 targetCustomizations:
 - name: dev
   helm:
@@ -10,13 +10,19 @@ targetCustomizations:
     matchLabels:
       env: dev
 
+- name: test
+  helm:
+    values:
+      replicas: 3
+  clusterSelector:
+    matchLabels:
+      env: test
+
 - name: prod
   helm:
     values:
-      serviceType: NodePort
+      serviceType: LoadBalancer
       replicas: 3
   clusterSelector:
     matchLabels:
       env: prod
-      
-
